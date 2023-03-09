@@ -83,9 +83,13 @@ See image below
 Select “Create”.  Just as before the arrow pointing to the right now appears next to JettyWebSocketServer.  Click on the arrow pointing to the right. Click “Yes” to save changes.  This opens the Process Group Configuration screen with the Controller Services tab selected.  We just created a new controller service called JettyWebServer.  Notice the state is invalid that is because we need to add a listening port to this controller service.  Click the pencil icon all the way to the right. This will open up a configure controller service window.  For the Property “Listen Port” lets set that to 9998.  (The reason I selected 9998 is because the index.html code in the Archive directory is going to make a web socket request on this port.).  Select “APPLY” and now click the lightening bolt icon to enabled the service.
 
 # The other processors (ExecuteStream Command and Put File)
-Right click on the ExecuteStream process Processor and select configure make sure you set the “Command Path” property to a directory that exists with the server.sh file from the github repo.  In this example it is using this directory “/Users/drice/Downloads/Software/nifi-1.1.0.2.1.2.0-10/server.sh”
+Right click on the `ExecuteStream process Processor` and select configure. Make sure you set the `Command Path` arguments to a directory that exists with the server.sh file from the github repo.  In this example it is using this directory “/Users/drice/Downloads/Software/nifi-1.1.0.2.1.2.0-10/server.sh”. 
 
-Also make sure you edit the content of the server.sh file.  Currently this content is “/Users/drice/Documents/websocket/index.html”.  Again you’ll want to make sure to modify this directory structure to match where you have the index.html on your system.
+Verify as well that the `Command Path` invokes the right command. The image below uses the `bash` command as an example to execute `.sh` files in a Windows environment
+
+![image](/images/configureExecuteStreamCommand.jpg?raw=true "ExecuteStreamCommand configuration")
+
+Also make sure you edit the content of the server.sh file.  Currently this content is “/Users/drice/Documents/websocket/index.html”.  Again, you’ll want to make sure to modify this directory structure to match where you have the `index.html` on your system.
 
 Lastly the PutFile process - where the data will write the contents of the stream.  Current value is set to “/Users/drice/Downloads/Software/nifi-1.1.0.2.1.2.0-10/logs”.  Make sure the directory changes to reflect a proper value for your system.
 
